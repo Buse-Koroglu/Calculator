@@ -1,0 +1,82 @@
+import tkinter as tk
+from tkinter import messagebox
+
+def add():
+    try:
+      result = float(entry1.get()) + float(entry2.get())
+      messagebox.showinfo("RESULT",result) 
+    except ValueError:
+       messagebox.showerror("Exception found","Value Error")
+
+
+def substract():
+    try:
+      result = float(entry1.get()) - float(entry2.get())
+      messagebox.showinfo("RESULT",result) 
+    except ValueError:
+       messagebox.showerror("Exception found","Value Error")
+
+def multiply():
+    try:
+      result = float(entry1.get()) * float(entry2.get())
+      messagebox.showinfo("RESULT",result) 
+    except ValueError:
+       messagebox.showerror("Exception found","Value Error")
+
+def divison():
+    if (float(entry2.get()))==0 :       
+       if(float(entry1.get())!=0):
+         messagebox.showerror("Exception found ","Division By Zero")
+       else:
+         messagebox.showerror("Information","Indeterminate(0/0)")
+    else:
+     try:
+       result = float(entry1.get()) / float(entry2.get())
+       messagebox.showinfo("RESULT",result) 
+     except ValueError:
+       messagebox.showerror("Exception found","Value Error") 
+
+def modulus():
+    try: 
+      result = float(entry1.get()) % float(entry2.get())
+      if result==0:
+         messagebox.showinfo("RESULT","0")
+      else:   
+         messagebox.showinfo("RESULT",result) 
+    except ValueError:
+      messagebox.showerror("Exception found","Value Error") 
+
+root = tk.Tk()
+root.title("CALCULATOR")
+
+label1 = tk.Label(root,text="First number ",font="Ariel")
+label1.grid(row=0,column=0,padx=50,pady=30)
+
+label2 = tk.Label(root,text= "Second number ",font="Ariel")
+label2.grid(row=0,column=1,padx=50,pady=30)
+
+
+entry1 = tk.Entry(root)
+entry1.grid(row=1, column=0,padx=50,pady=30)
+
+
+entry2 = tk.Entry(root)
+entry2.grid(row=1, column=1,padx=50,pady=30)
+
+
+add_button = tk.Button(root,text="Addition(+)",font="Ariel",command=add)
+add_button.grid(row=2,column=0,padx=20,pady=20)
+
+substract_button =tk.Button(root,text="Substract(-)",font="Ariel",command=substract)
+substract_button.grid(row=2,column=1,padx=20,pady=20)
+
+multiply_button=tk.Button(root,text="Multiply(*)",font="Ariel",command=multiply)
+multiply_button.grid(row=3,column=0,padx=20,pady=20)
+
+division_button=tk.Button(root,text="Division(/)",font="Ariel",command=divison)
+division_button.grid(row=3,column=1,padx=20,pady=20)
+
+modulus_button= tk.Button(root,text="Modulus(%)",font="Ariel",command=modulus)
+modulus_button.grid(row=4,column=0,padx=20,pady=20)
+
+root.mainloop()
